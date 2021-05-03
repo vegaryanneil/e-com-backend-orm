@@ -16,9 +16,9 @@ CREATE TABLE category (
 CREATE TABLE product (
     id INTEGER NOT NULL AUTO_INCREMENT,
     product_name VARCHAR(30) NOT NULL,
-    price DECIMAL(2) NOT NULL,
+    price DECIMAL(4) NOT NULL,
     stock INTEGER NOT NULL DEFAULT 10,
-    category_id INTEGER AUTO_INCREMENT,
+    category_id INTEGER,
     FOREIGN KEY (category_id) REFERENCES category(id),
     PRIMARY KEY (id)
 );
@@ -32,15 +32,12 @@ CREATE TABLE tag (
 
 CREATE TABLE producttag (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    product_id INTEGER NOT NULL AUTO_INCREMENT,
+    product_id INTEGER NOT NULL,
     FOREIGN KEY (product_id) REFERENCES product(id),
-    tag_id INTEGER NOT NULL AUTO_INCREMENT ,
+    tag_id INTEGER NOT NULL,
     FOREIGN KEY (tag_id) REFERENCES tag(id),
     PRIMARY KEY (id)
 );
-
-
-
 
 SELECT * FROM ecommerce_db.category;
 SELECT * FROM ecommerce_db.product;
